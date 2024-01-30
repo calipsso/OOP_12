@@ -1,4 +1,4 @@
-
+import json
 import pickle
 class Student():
     def __init__(self, name, age, country):
@@ -9,16 +9,28 @@ class Student():
     def __str__(self):
         return f"Student sa vola {self.name} z krajiny {self.country} a ma {self.age}"
 
-    def vloz_do_suboru(self, nazov_suboru):
-        with open(nazov_suboru, "wb") as file:
-            pickle.dump(self, file)
+    # def vloz_do_suboru(self, nazov_suboru):
+    #     with open(nazov_suboru, "wb") as file:
+    #         pickle.dump(self, file)
+    #
+    # @staticmethod
+    # def vytvor_zo_suboru(nazov_suboru):
+    #     with open(nazov_suboru, "rb") as file:
+    #         return pickle.load(file)
+    #
 
-    @staticmethod
-    def vytvor_zo_suboru(nazov_suboru):
-        with open(nazov_suboru, "rb") as file:
-            return pickle.load(file)
+    def to_json(self):
+        return json.dumps(self, default=lambda obj: obj.__dict__)
 
-#patrik = Student("Patrik", 30, "Slovakia")
+    def uloz_do_suboru(self, nazov):
+        with open(nazov, "w") as file:
+            file.write(self.to_json())
+
+patrik = Student("Patrik", 30, "Slovakia")
+milan = Student("Milan", 40, "CZ")
+
+patrik.studentov_kamos = milan
+patrik.uloz_do_suboru("patrik.json")
 
 #print(patrik)
 # serialized = pickle.dumps(patrik)
@@ -27,36 +39,8 @@ class Student():
 # patrik_obnoveny = pickle.loads(serialized)
 # print(patrik_obnoveny)
 #patrik.vloz_do_suboru("patrik.txt")
-patrik_zo_suboru = Student.vytvor_zo_suboru("patrik.txt")
-print(patrik_zo_suboru)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#patrik_zo_suboru = Student.vytvor_zo_suboru("patrik.txt")
+#rint(patrik_zo_suboru)
 
 
 
