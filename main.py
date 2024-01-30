@@ -3,8 +3,8 @@ class LinkedList:
         self.head = None
 
     def vloz(self, prvok):
-        if self.head is None:
-            self.head = prvok
+        if self.head is None: # je hlavicka prazdna
+            self.head = prvok # ak ano hlavicka je prvok
         else:
             aktualny = self.head
             while aktualny.next:
@@ -17,6 +17,21 @@ class LinkedList:
         while aktualny.next:
             aktualny = aktualny.next
             print(aktualny.data)
+    def check(self,meno):
+        aktualny = self.head # zistujem ci je to ten prvy
+        if aktualny.data == meno:
+            return True
+        while aktualny.next:
+            aktualny = aktualny.next
+            if aktualny.data == meno:
+                return True
+        return False
+    # def vymenit(self, meno):
+    #     aktualny = self.head  # zistujem ci je to ten prvy
+    #     while aktualny.next:
+    #         aktualny = aktualny.next
+    #         if aktualny.data == meno:
+
 
 
 class Prvok:
@@ -26,11 +41,13 @@ class Prvok:
 
 
 mojLinked = LinkedList()
-prvok1 = Prvok("Milan")
-mojLinked.vloz(prvok1)
-prvok2 = Prvok("Jozo")
-mojLinked.vloz(prvok2)
-prvok3 = Prvok("Fero")
-mojLinked.vloz(prvok3)
+# prvok1 = Prvok("Milan")
+# mojLinked.vloz(prvok1)
+# prvok2 = Prvok("Jozo")
+# mojLinked.vloz(prvok2)
+# prvok3 = Prvok("Fero")
+# mojLinked.vloz(prvok3)
 mojLinked.vypis()
-print("test")
+#print("test")
+
+print(mojLinked.check("Milan"))
