@@ -12,11 +12,14 @@ class LinkedList:
             aktualny.next = prvok
 
     def vypis(self):
-        aktualny = self.head
-        print(aktualny.data)
-        while aktualny.next:
-            aktualny = aktualny.next
+        if self.head is None:
+            print("Zoznam je prazdny")
+        else:
+            aktualny = self.head
             print(aktualny.data)
+            while aktualny.next:
+                aktualny = aktualny.next
+                print(aktualny.data)
     def check(self,meno):
         aktualny = self.head # zistujem ci je to ten prvy
         if aktualny.data == meno:
@@ -49,5 +52,3 @@ mojLinked = LinkedList()
 # mojLinked.vloz(prvok3)
 mojLinked.vypis()
 #print("test")
-
-print(mojLinked.check("Milan"))
