@@ -27,6 +27,8 @@ class Student():
 # patrik_obnoveny = pickle.loads(serialized)
 # print(patrik_obnoveny)
 #patrik.vloz_do_suboru("patrik.txt")
+patrik_zo_suboru = Student.vytvor_zo_suboru("patrik.txt")
+print(patrik_zo_suboru)
 
 
 
